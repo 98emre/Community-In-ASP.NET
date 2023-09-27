@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using DistroLabb2.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@model DistroLabb2.Views.Home.ViewModels.IndexViewModel
+
+@{ ViewData["Title"] = "Home Page"; }
+
+<div class="text-center">
+    <h2 class="display-4">Welcome</h2>
+</div>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div>
+        Username: @Model.nameOfUser
+        @if (@Model.latestLoginTime == DateTime.MinValue)
+        {
+            <br />
+        }
+
+        @if (@Model.latestLoginTime != DateTime.MinValue)
+        {
+            <div>Last login: @Html.DisplayFor(modelItem => Model.latestLoginTime)</div>
+        }
+
+        Number of logins this month: @Model.amountMontlyLogin
+        <br />Number of unread messages: @Model.amountUnReadMessage
+
+    </div>
+}

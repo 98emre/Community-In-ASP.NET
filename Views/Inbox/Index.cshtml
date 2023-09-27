@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "InboxIndex";
+}
+
+@model DistroLabb2.Views.Inbox.ViewModels.IndexViewModel
+
+<div>
+    <div>Nr of messages: @Html.DisplayFor(modelItem => Model.amountOfMessages)</div>
+    <div>Nr of read messages: @Html.DisplayFor(modelItem => Model.amountReadMessages)</div>
+    <div>Nr of deleted messages: @Html.DisplayFor(modelItem => Model.amountDeletedMessages)</div>
+</div>
+
+<h4>Senders</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Sender
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.senders)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item)
+                </td>
+                <td>
+                    <a asp-controller="Inbox" asp-action="InboxSender" asp-route-id=@item>View messages</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

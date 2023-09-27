@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+@model DistroLabb2.Views.Inbox.ViewModels.InboxViewModel
+
+
+<h4>Inbox - Message from @Html.DisplayFor(modelItem => Model.fromUser)</h4>
+<div>
+    <form asp-action="InboxDelete" asp-controller="Home" method="post">
+        <label>@Html.DisplayFor(modelItem => Model.message) </label><br>
+
+        <a asp-controller="Inbox" asp-action="Delete" asp-route-id="@Model.id">Delete</a> |
+        <a asp-controller="Inbox" asp-action="Index">Return to inbox</a> |
+    </form>
+</div>

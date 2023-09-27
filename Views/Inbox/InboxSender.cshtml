@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "InboxSenders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model DistroLabb2.Views.Inbox.ViewModels.InboxViewModel
+
+<h1>Inbox</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Timestamp
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.messageDetails)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.header)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.theTimeStamp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.readTheMessage)
+                </td>
+                <td>
+                    <a asp-controller="Inbox" asp-action="InboxMessage" asp-route-id="@item.id">Read</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
